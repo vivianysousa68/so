@@ -39,3 +39,20 @@ $TTL 604800
 @ IN NS ns1.empresa.local.
 ns1 10.0.2.15
 www 10.0.2.15
+
+# Etapa 3: Reiniciar, Configurar Cliente e Testar
+
+# Reinicie o serviço BIND:
+ sudo systemctl restart bind9
+
+# Configure o DNS da VM em
+ /etc/resolv.conf:
+
+ Adicione no topo:
+ nameserver 127.0.0.1
+
+# Teste a resolução de nome:
+  dig www.empresa.local
+
+# Teste final com curl:
+  curl http://www.empresa.local
